@@ -1,3 +1,4 @@
+```tsx
 "use client";
 import Link from "next/link";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -26,7 +27,10 @@ export default function GroupMangaCard({ manga }: GroupMangaCardProps) {
             src={coverUrl}
             alt={`Ảnh bìa ${manga.title}`}
             onError={(e) => {
-              (e.target as HTMLImageElement).src = "/images/xidoco.webp";
+              const img = e.target;
+              if (img && typeof img === "object" && "src" in img) {
+                (img as { src: string }).src = "/images/xidoco.webp";
+              }
             }}
           />
         </CardContent>
@@ -39,3 +43,4 @@ export default function GroupMangaCard({ manga }: GroupMangaCardProps) {
     </Link>
   );
 }
+```
