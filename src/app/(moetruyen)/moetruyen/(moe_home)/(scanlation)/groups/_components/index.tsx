@@ -209,7 +209,7 @@ export default function MoeGroupsSearch() {
           autoComplete="off"
           value={inputValue}
           onChange={(event) => {
-            void setInputValue(event.target.value || null);
+            void setInputValue(event.currentTarget.value || null);
             void setPage(null);
           }}
         />
