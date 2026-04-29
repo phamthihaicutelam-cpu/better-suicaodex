@@ -1,4 +1,3 @@
-```tsx
 "use client";
 import Link from "next/link";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -43,4 +42,3 @@ export default function GroupMangaCard({ manga }: GroupMangaCardProps) {
     </Link>
   );
 }
-```
