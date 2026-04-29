@@ -209,7 +209,8 @@ export default function MoeGroupsSearch() {
           autoComplete="off"
           value={inputValue}
           onChange={(event) => {
-            void setInputValue(event.currentTarget.value || null);
+            const value = (event.nativeEvent.target as HTMLInputElement).value;
+            void setInputValue(value || null);
             void setPage(null);
           }}
         />
