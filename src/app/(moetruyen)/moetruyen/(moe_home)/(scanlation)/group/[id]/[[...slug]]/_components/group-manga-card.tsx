@@ -31,7 +31,7 @@ export default function GroupMangaCard({ manga }: GroupMangaCardProps) {
             src={coverUrl}
             alt={`Ảnh bìa ${manga.title}`}
             onError={(e) => {
-              e.currentTarget.src = "/images/xidoco.webp";
+              (e.currentTarget as HTMLImageElement).src = "/images/xidoco.webp";
             }}
           />
         </CardContent>
