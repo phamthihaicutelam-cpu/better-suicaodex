@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { useDebouncedValue } from "@mantine/hooks";
 import { useQuery } from "@tanstack/react-query";
@@ -70,6 +70,7 @@ function isTeamSortValue(value: string): value is TeamsSortValue {
 }
 
 export default function MoeGroupsSearch() {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useQueryState(
     "q",
     parseAsString
@@ -204,12 +205,13 @@ export default function MoeGroupsSearch() {
           <SearchIcon />
         </InputGroupAddon>
         <InputGroupInput
+          ref={inputRef}
           className="h-10"
           placeholder="Nhập tên nhóm, mô tả..."
           autoComplete="off"
           value={inputValue}
-          onChange={(event) => {
-            const value = (event.nativeEvent.target as HTMLInputElement).value;
+          onChange={() => {
+            const value = inputRef.current?.value ?? "";
             void setInputValue(value || null);
             void setPage(null);
           }}
