@@ -135,8 +135,7 @@ export default function MoeGroupsSearch() {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target as HTMLInputElement;
-    void setInputValue(value || null);
+    void setInputValue(event.currentTarget.value || null);
     void setPage(null);
   };
 
